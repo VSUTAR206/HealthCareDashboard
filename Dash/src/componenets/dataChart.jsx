@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, lazy, Suspense } from "react";
 // import Chart from "react-apexcharts";
 import { pateinData } from "./apiContext/data";
-import Grafe from "./Graph";
+const Grafe = lazy(() => import("./Graph"));
 
 const DataChart = () => {
   const { ldata } = useContext(pateinData);
@@ -68,20 +68,26 @@ const DataChart = () => {
           </select>
         </div>
         <div className="chart">
-          <Grafe userData={ldata} />
+          <Suspense fallback={<div className="text-center">LOading...</div>}>
+            <Grafe userData={ldata} />
+          </Suspense>
         </div>
       </div>
       <div className="col-md-3">
         <div className="col-md-6">
           <h5>Systolic</h5>
-          <span className="g">{disval}</span>
+          <span className="g">
+            {disval ? disval : <p>No Patient Is Selected .</p>}
+          </span>
           <br />
           {dislev}
         </div>
         <hr />
         <div className="col-md-6">
-          <h5>Diastolic</h5>
-          <span className="f">{sysval}</span>
+          <h5>Diastoli.</h5>
+          <span className="f">
+            {sysval ? sysval : <p>No Patient Is Selected .</p>}
+          </span>
           <br />
           {syslev}
         </div>

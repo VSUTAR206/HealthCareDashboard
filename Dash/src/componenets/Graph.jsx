@@ -51,7 +51,6 @@ const DataChart = ({ userData }) => {
 
   return (
     <div className="chart-container">
-      <h4>Blood Pressure .</h4>
       <Chart
         options={VishalChart.options}
         series={VishalChart.series}

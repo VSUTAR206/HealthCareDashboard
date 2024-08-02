@@ -6,9 +6,9 @@ import DashBoard from "./componenets/dashboard";
 
 function App() {
   return (
-    <div className="">
+    <div className="main">
       <Navbar />
-      <div className="row d-flex justify-content-center align-item-center">
+      <div className="row d-flex justify-content-center align-item-center" style={{marginTop:"32px"}}>
         <Sidebar />
         <DashBoard />
       </div>
